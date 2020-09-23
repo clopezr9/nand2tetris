@@ -40,4 +40,33 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+    Not(in=instruction[15], out=NotInst15);
+    Mux16(a=ALUout, b=instruction, sel=NotInst15, out=outMux1);
+    And(a=true, b=instruction[15], out=out0);           //True + Inst[15] = out0
+    And(a=out0, b=instruction[5], out=out1);
+    Or(a=out1, b=NotInst15, out=Cout1);
+    ARegister(in=outMux1, load=Cout1, out[0..14]=addressM, out=RegAOut);
+    And(a=out0, b=instruction[4], out=Cout2);
+    DRegister(in=ALUout, load=Cout2, out=RegDOut);
+    And(a=instruction[12], b=out0, out=Cout3);
+    Mux16(a=RegAOut, b=inM, sel=Cout3, out=outMux2);
+    And(a=instruction[11], b=out0, out=zx);
+    And(a=instruction[10], b=out0, out=nx);
+    And(a=instruction[9], b=out0, out=zy);
+    And(a=instruction[8], b=out0, out=ny);
+    And(a=instruction[7], b=out0, out=f);
+    And(a=instruction[6], b=out0, out=no);
+    ALU(x=RegDOut, y=outMux2, zx=zx, nx=nx, zy=zy, ny=ny, f=f, no=no, out=outM, out=ALUout, zr=zr, ng=ng);
+    And(a=out0, b=instruction[3], out=writeM);
+    Or(a=zr, b=ng, out=out2);              //zr | ng = out2
+    Not(in=out2, out=NotOut2);          // ! (zr | ng) = out2
+    And(a=out0, b=instruction[2], out=outJ1);
+    And(a=out0, b=instruction[1], out=outJ2);
+    And(a=out0, b=instruction[0], out=outJ3);
+    And(a=ng, b=outJ1, out=out3);
+    And(a=zr, b=outJ2, out=out4);
+    And(a=NotOut2, b=outJ3, out=out5);
+    Or(a=out3, b=out4, out=outOr1);
+    Or(a=outOr1, b=out5, out=Cout4);
+    PC(in=RegAOut, load=Cout4, inc=true, reset=reset, out[0..14]=pc);
 }
