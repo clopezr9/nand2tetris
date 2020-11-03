@@ -1,0 +1,164 @@
+push constant 6            //N
+pop static 0
+
+push static 0
+push constant 1
+eq
+if-goto N1
+
+push static 0
+push constant 2
+eq
+if-goto N2
+
+push static 0
+push constant 3
+eq
+if-goto N3
+
+push static 0
+push constant 4
+eq
+if-goto N4
+
+push static 0
+push constant 5
+eq
+if-goto N5
+
+push static 0
+push constant 6
+eq
+if-goto N6
+
+label N1
+push constant 1
+pop local 0
+goto fin
+
+label N2
+push constant 1
+pop local 0
+push constant 2
+pop local 1
+push constant 2
+pop local 2
+goto fin
+
+label N3
+push constant 1
+pop local 0
+push constant 2
+pop local 1
+push constant 2
+pop local 2
+push constant 3
+pop local 3
+push constant 3
+pop local 4
+push constant 3
+pop local 5
+goto fin
+
+label N4
+push constant 1
+pop local 0
+push constant 2
+pop local 1
+push constant 2
+pop local 2
+push constant 3
+pop local 3
+push constant 3
+pop local 4
+push constant 3
+pop local 5
+push constant 4
+pop local 6
+push constant 4
+pop local 7
+push constant 4
+pop local 8
+push constant 4
+pop local 9
+goto fin
+
+label N5
+push constant 1
+pop local 0
+push constant 2
+pop local 1
+push constant 2
+pop local 2
+push constant 3
+pop local 3
+push constant 3
+pop local 4
+push constant 3
+pop local 5
+push constant 4
+pop local 6
+push constant 4
+pop local 7
+push constant 4
+pop local 8
+push constant 4
+pop local 9
+push constant 5
+pop local 10
+push constant 5
+pop local 11
+push constant 5
+pop local 12
+push constant 5
+pop local 13
+push constant 5
+pop local 14
+goto fin
+
+label N6
+push constant 1
+pop local 0
+push constant 2
+pop local 1
+push constant 2
+pop local 2
+push constant 3
+pop local 3
+push constant 3
+pop local 4
+push constant 3
+pop local 5
+push constant 4
+pop local 6
+push constant 4
+pop local 7
+push constant 4
+pop local 8
+push constant 4
+pop local 9
+push constant 5
+pop local 10
+push constant 5
+pop local 11
+push constant 5
+pop local 12
+push constant 5
+pop local 13
+push constant 5
+pop local 14
+push constant 6
+pop local 15
+push constant 6
+pop local 16
+push constant 6
+pop local 17
+push constant 6
+pop local 18
+push constant 6
+pop local 19
+push constant 6
+pop local 20
+goto fin
+
+label fin

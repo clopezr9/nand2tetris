@@ -1,0 +1,54 @@
+push constant 20
+pop local 16           //numero de veces del ciclo 16
+push constant 0
+pop local 17           //el i del ciclo
+push constant 1
+pop local 18           //1 para sumar
+
+push constant 0
+pop local 0
+push constant 1
+pop local 1
+push constant 1
+pop local 2
+push constant 3
+pop local 17
+
+push local 16
+push local 17
+eq
+if-goto fin
+goto ciclo
+
+label ciclo
+push local 0
+push local 1
+push local 2
+add
+add
+pop local 3             //guarada respuesta en el stack
+push local 0
+push local 1
+pop local 0
+push local 2
+pop local 1
+push local 3
+pop local 2
+push local 17
+push local 18
+add
+pop local 17
+push local 17
+push local 16
+eq
+if-goto fin
+goto ciclo
+
+label fin
+push local 0
+push local 1
+push local 2
+
+
+
+

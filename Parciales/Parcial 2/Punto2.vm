@@ -1,0 +1,90 @@
+push constant 15
+pop static 16           //numero de veces del ciclo 16
+push constant 0
+pop static 17           //el i del ciclo
+push constant 1
+pop static 18           //1 para sumar
+push constant 4315
+pop static 19           //Puntero del areglo
+push constant 0
+pop static 20           //Indice del areglo
+push constant 0
+pop static 21           //Indice del areglo
+
+push constant 0
+pop local 0
+push constant 1
+pop local 1
+push constant 2
+pop static 17
+
+push static 16
+push static 17
+eq
+if-goto fin
+goto ciclo
+
+label ciclo
+push local 1
+push static 18
+add
+pop local 2             //guarada respuesta en el stack
+push local 0
+push local 1
+pop local 0
+push local 2
+pop local 1
+push static 17
+push static 18
+add
+pop static 17
+push static 17
+push static 16
+eq
+if-goto fin
+goto ciclo
+
+label fin
+push local 0
+push local 1
+push local 2
+pop static 2
+goto invertir
+
+label invertir
+push static 16       //N
+push static 20       //Array index
+sub                             //N-ArrayIndex
+push constant 0
+eq                                                          
+if-goto ponerEnStack
+push static 19
+push static 20
+add
+pop pointer 1
+pop that 0
+push static 20
+push constant 1
+add
+pop  static 20
+goto invertir
+
+label ponerEnStack
+push static 16
+push static 21
+sub
+push constant 0
+eq
+if-goto finInvertir
+push static 19
+push static 21
+add
+pop  pointer  1
+push that     0
+push static 21
+push constant 1
+add
+pop  static 21
+goto ponerEnStack
+
+label finInvertir
