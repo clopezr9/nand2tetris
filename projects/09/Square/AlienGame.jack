@@ -1,0 +1,94 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/09 Alien/AlienGame.jack
+
+/**
+ * Implements the Alien Dance game.
+ * This simple game allows the user to move a black alien around
+ * the screen, and change the alien's size during the movement.
+ * When the game starts, a alien of 30 by 30 pixels is shown at the
+ * top-left corner of the screen. The user controls the alien as follows.
+ * The 4 arrow keys are used to move the alien up, down, left, and right.
+ * The 'z' and 'x' keys are used, respectively, to decrement and increment
+ * the alien's size. The 'q' key is used to quit the game.
+ */
+
+class AlienGame {
+   field Alien alien; // the alien of this game
+   field int direction; // the alien's current direction: 
+                        // 0=none, 1=up, 2=down, 3=left, 4=right
+
+   /** Constructs a new Alien Game. */
+   constructor AlienGame new() {
+      // Creates a 30 by 30 pixels alien and positions it at the top-left
+      // of the screen.
+      let alien = Alien.new(0, 25, 6, 42,              //rectangle A
+                                                7, 19, 12, 30,              //rectangle B
+                                                13, 0, 18, 6,
+                                                13, 13, 18, 42,
+                                                19, 7, 24, 18,
+                                                19, 25, 24, 36,
+                                                19, 43, 30, 48,
+                                                25, 13, 42, 36,
+                                                37, 43, 48, 48,
+                                                43, 25, 48, 36,
+                                                43, 7, 48, 18,
+                                                49, 0, 54, 6,
+                                                49, 13, 54, 42,
+                                                55, 19, 60, 30,
+                                                61, 25, 66, 42
+                                                );
+      let direction = 0;  // initial state is no movement
+      return this;
+   }
+
+   /** Disposes this game. */
+   method void dispose() {
+      do alien.dispose();
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   /** Moves the alien in the current direction. */
+   method void moveAlien() {
+      if (direction = 1) { do alien.moveUp(); }
+      if (direction = 2) { do alien.moveDown(); }
+      if (direction = 3) { do alien.moveLeft(); }
+      if (direction = 4) { do alien.moveRight(); }
+      do Sys.wait(5);  // delays the next movement
+      return;
+   }
+
+   /** Runs the game: handles the user's inputs and moves the alien accordingly */
+   method void run() {
+      var char key;  // the key currently pressed by the user
+      var boolean exit;
+      let exit = false;
+      
+      while (~exit) {
+         // waits for a key to be pressed
+         while (key = 0) {
+            let key = Keyboard.keyPressed();
+            do moveAlien();
+         }
+         if (key = 81)  { let exit = true; }     // q key
+        // if (key = 90)  { do alien.decSize(); } // z key
+       //  if (key = 88)  { do alien.incSize(); } // x key
+         if (key = 131) { let direction = 1; }   // up arrow
+         if (key = 133) { let direction = 2; }   // down arrow
+         if (key = 130) { let direction = 3; }   // left arrow
+         if (key = 132) { let direction = 4; }   // right arrow
+
+         // waits for the key to be released
+         while (~(key = 0)) {
+            let key = Keyboard.keyPressed();
+            do moveAlien();
+         }
+     } // while
+     return;
+   }
+}
+
+
+

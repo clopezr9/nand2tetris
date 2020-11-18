@@ -1,0 +1,433 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/09/Alien/Alien.jack
+
+/** Implements a graphical square. */
+class Alien {
+
+   field int Ax, Ay, Awide, Aheight; // rectangle A
+   field int Bx, By, Bwide, Bheight; // rectangle B
+   field int Cx, Cy, Cwide, Cheight; // rectangle C
+   field int Dx, Dy, Dwide, Dheight; // rectangle D
+   field int Ex, Ey, Ewide, Eheight; // rectangle E
+   field int Fx, Fy, Fwide, Fheight; // rectangle F
+   field int Gx, Gy, Gwide, Gheight; // rectangle G
+   field int Hx, Hy, Hwide, Hheight; // rectangle H
+   field int Ix, Iy, Iwide, Iheight; // rectangle I
+   field int Jx, Jy, Jwide, Jheight; // rectangle J
+   field int Kx, Ky, Kwide, Kheight; // rectangle K
+   field int Lx, Ly, Lwide, Lheight; // rectangle L
+   field int Mx, My, Mwide, Mheight; // rectangle M
+   field int Nx, Ny, Nwide, Nheight; // rectangle N
+   field int Ox, Oy, Owide, Oheight; // rectangle O
+
+   /** Constructs a new square with a given location andAsize. */
+   constructor Alien new(int x1, int y1, int wide1, int height1, 
+                                             int x2, int y2, int wide2, int height2,
+                                             int x3, int y3, int wide3, int height3,
+                                             int x4, int y4, int wide4, int height4,
+                                             int x5, int y5, int wide5, int height5,
+                                             int x6, int y6, int wide6, int height6,
+                                             int x7, int y7, int wide7, int height7,
+                                             int x8, int y8, int wide8, int height8,
+                                             int x9, int y9, int wide9, int height9,
+                                             int x10, int y10, int wide10, int height10,
+                                             int x11, int y11, int wide11, int height11,
+                                             int x12, int y12, int wide12, int height12,
+                                             int x13, int y13, int wide13, int height13,
+                                             int x14, int y14, int wide14, int height14,
+                                             int x15, int y15, int wide15, int height15) {
+      let Ax = x1;
+      let Ay = y1;
+      let Awide = wide1;
+      let Aheight = height1;
+      let Bx = x2;
+      let By = y2;
+      let Bwide = wide2;
+      let Bheight = height2;
+      let Cx = x3;
+      let Cy = y3;
+      let Cwide = wide3;
+      let Cheight = height3;
+      let Dx = x4;
+      let Dy = y4;
+      let Dwide = wide4;
+      let Dheight = height4;
+      let Ex = x5;
+      let Ey = y5;
+      let Ewide = wide5;
+      let Eheight = height5;
+      let Fx = x6;
+      let Fy = y6;
+      let Fwide = wide6;
+      let Fheight = height6;
+      let Gx = x7;
+      let Gy = y7;
+      let Gwide = wide7;
+      let Gheight = height7;
+      let Hx = x8;
+      let Hy = y8;
+      let Hwide = wide8;
+      let Hheight = height8;
+      let Ix = x9;
+      let Iy = y9;
+      let Iwide = wide9;
+      let Iheight = height9;
+      let Jx = x10;
+      let Jy = y10;
+      let Jwide = wide10;
+      let Jheight = height10;
+      let Kx = x11;
+      let Ky = y11;
+      let Kwide = wide11;
+      let Kheight = height11;
+      let Lx = x12;
+      let Ly = y12;
+      let Lwide = wide12;
+      let Lheight = height12;
+      let Mx = x13;
+      let My = y13;
+      let Mwide = wide13;
+      let Mheight = height13;
+      let Nx = x14;
+      let Ny = y14;
+      let Nwide = wide14;
+      let Nheight = height14;
+      let Ox = x15;
+      let Oy = y15;
+      let Owide = wide15;
+      let Oheight = height15;
+      do show();
+      return this;
+   }
+
+   /** Disposes this square. */
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   method void show(){
+      do Screen.setColor(true);
+      do draw();
+      return;
+   }
+   /** Draws the square on the screen. */
+   method void draw() {
+      do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
+      do Screen.drawRectangle(Bx, By, Bwide, Bheight);
+      do Screen.drawRectangle(Cx, Cy, Cwide, Cheight);
+      do Screen.drawRectangle(Dx, Dy, Dwide, Dheight);
+      do Screen.drawRectangle(Ex, Ey, Ewide, Eheight);
+      do Screen.drawRectangle(Fx, Fy, Fwide, Fheight);
+      do Screen.drawRectangle(Gx, Gy, Gwide, Gheight);
+      do Screen.drawRectangle(Hx, Hy, Hwide, Hheight);
+      do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
+      do Screen.drawRectangle(Jx, Jy, Jwide, Jheight);
+      do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
+      do Screen.drawRectangle(Lx, Ly, Lwide, Lheight);
+      do Screen.drawRectangle(Mx, My, Mwide, Mheight);
+      do Screen.drawRectangle(Nx, Ny, Nwide, Nheight);
+      do Screen.drawRectangle(Ox, Oy, Owide, Oheight);
+      return;
+   }
+
+   /** Erases the square from the screen. */
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
+      do Screen.drawRectangle(Bx, By, Bwide, Bheight);
+      do Screen.drawRectangle(Cx, Cy, Cwide, Cheight);
+      do Screen.drawRectangle(Dx, Dy, Dwide, Dheight);
+      do Screen.drawRectangle(Ex, Ey, Ewide, Eheight);
+      do Screen.drawRectangle(Fx, Fy, Fwide, Fheight);
+      do Screen.drawRectangle(Gx, Gy, Gwide, Gheight);
+      do Screen.drawRectangle(Hx, Hy, Hwide, Hheight);
+      do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
+      do Screen.drawRectangle(Jx, Jy, Jwide, Jheight);
+      do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
+      do Screen.drawRectangle(Lx, Ly, Lwide, Lheight);
+      do Screen.drawRectangle(Mx, My, Mwide, Mheight);
+      do Screen.drawRectangle(Nx, Ny, Nwide, Nheight);
+      do Screen.drawRectangle(Ox, Oy, Owide, Oheight);
+      return;
+   }
+
+   /** Moves the square up by 2 pixels. */
+   method void moveUp() {
+      if ((Cy - 1)  > 1) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
+         let Ay = Ay - 1;
+         let Aheight = Aheight - 1;
+         do Screen.drawRectangle(Bx, By, Bwide, Bheight);
+         let By = By - 1;
+         let Bheight = Bheight - 1;
+         do Screen.drawRectangle(Cx, Cy, Cwide, Cheight);
+         let Cy = Cy - 1;
+         let Cheight = Cheight - 1;
+         do Screen.drawRectangle(Dx, Dy, Dwide, Dheight);
+         let Dy = Dy - 1;
+         let Dheight = Dheight - 1;
+         do Screen.drawRectangle(Ex, Ey, Ewide, Eheight);
+         let Ey = Ey - 1;
+         let Eheight = Eheight - 1;
+         do Screen.drawRectangle(Fx, Fy, Fwide, Fheight);
+         let Fy = Fy - 1;
+         let Fheight = Fheight - 1;
+         do Screen.drawRectangle(Gx, Gy, Gwide, Gheight);
+         let Gy = Gy - 1;
+         let Gheight = Gheight - 1;
+         do Screen.drawRectangle(Hx, Hy, Hwide, Hheight);
+         let Hy = Hy - 1;
+         let Hheight = Hheight -1;
+         do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
+         let Iy = Iy - 1;
+         let Iheight = Iheight -1;
+         do Screen.drawRectangle(Dx, Jy, Jwide, Jheight);
+         let Jy = Jy - 1;
+         let Jheight = Jheight - 1;
+         do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
+         let Ky = Ky - 1;
+         let Kheight = Kheight - 1;
+         do Screen.drawRectangle(Lx, Ly, Lwide, Lheight);
+         let Ly = Ly - 1;
+         let Lheight = Lheight - 1;
+         do Screen.drawRectangle(Mx, My, Mwide, Mheight);
+         let My = My - 1;
+         let Mheight = Mheight -1;
+         do Screen.drawRectangle(Nx, Ny, Nwide, Nheight);
+         let Ny = Ny - 1;
+         let Nheight = Nheight -1;
+         do Screen.drawRectangle(Ox, Oy, Owide, Oheight);
+         let Oy = Oy - 1;
+         let Oheight = Oheight -1;
+         do Screen.setColor(true);
+         do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
+         do Screen.drawRectangle(Bx, By, Bwide, Bheight);
+         do Screen.drawRectangle(Cx, Cy, Cwide, Cheight);
+         do Screen.drawRectangle(Dx, Dy, Dwide, Dheight);
+         do Screen.drawRectangle(Ex, Ey, Ewide, Eheight);
+         do Screen.drawRectangle(Fx, Fy, Fwide, Fheight);
+         do Screen.drawRectangle(Gx, Gy, Gwide, Gheight);
+         do Screen.drawRectangle(Hx, Hy, Hwide, Hheight);
+         do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
+         do Screen.drawRectangle(Jx, Jy, Jwide, Jheight);
+         do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
+         do Screen.drawRectangle(Lx, Ly, Lwide, Lheight);
+         do Screen.drawRectangle(Mx, My, Mwide, Mheight);
+         do Screen.drawRectangle(Nx, Ny, Nwide, Nheight);
+         do Screen.drawRectangle(Ox, Oy, Owide, Oheight);
+      }
+      return;
+   }
+
+   /** Moves the square down by 2 pixels. */
+   method void moveDown() {
+      if (Iheight + 1 < 254) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
+         let Ay = Ay + 1;
+         let Aheight = Aheight + 1;
+         do Screen.drawRectangle(Bx, By, Bwide, Bheight);
+         let By = By + 1;
+         let Bheight = Bheight + 1;
+         do Screen.drawRectangle(Cx, Cy, Cwide, Cheight);
+         let Cy = Cy + 1;
+         let Cheight = Cheight + 1;
+         do Screen.drawRectangle(Dx, Dy, Dwide, Dheight);
+         let Dy = Dy + 1;
+         let Dheight = Dheight + 1;
+         do Screen.drawRectangle(Ex, Ey, Ewide, Eheight);
+         let Ey = Ey + 1;
+         let Eheight = Eheight + 1;
+         do Screen.drawRectangle(Fx, Fy, Fwide, Fheight);
+         let Fy = Fy + 1;
+         let Fheight = Fheight + 1;
+         do Screen.drawRectangle(Gx, Gy, Gwide, Gheight);
+         let Gy = Gy + 1;
+         let Gheight = Gheight + 1;
+         do Screen.drawRectangle(Hx, Hy, Hwide, Hheight);
+         let Hy = Hy + 1;
+         let Hheight = Hheight + 1;
+         do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
+         let Iy = Iy + 1;
+         let Iheight = Iheight + 1;
+         do Screen.drawRectangle(Jx, Jy, Jx +Jwide, Jheight);
+         let Jy = Jy + 1;
+         let Jheight = Jheight + 1;
+         do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
+         let Ky = Ky + 1;
+         let Kheight = Kheight + 1;
+         do Screen.drawRectangle(Lx, Ly, Lwide, Lheight);
+         let Ly = Ly + 1;
+         let Lheight = Lheight + 1;
+         do Screen.drawRectangle(Mx, My, Mwide, Mheight);
+         let My = My + 1;
+         let Mheight = Mheight + 1;
+         do Screen.drawRectangle(Nx, Ny, Nwide, Nheight);
+         let Ny = Ny + 1;
+         let Nheight = Nheight + 1;
+         do Screen.drawRectangle(Ox, Oy, Owide, Oheight);
+         let Oy = Oy + 1;
+         let Oheight = Oheight + 1;
+         do Screen.setColor(true);
+         do Screen.drawRectangle(Ox, Oy, Owide, Oheight);
+         do Screen.drawRectangle(Nx, Ny, Nwide, Nheight);
+         do Screen.drawRectangle(Mx, My, Mwide, Mheight);
+         do Screen.drawRectangle(Lx, Ly, Lwide, Lheight);
+         do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
+         do Screen.drawRectangle(Dx, Jy, Jwide, Jheight);
+         do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
+         do Screen.drawRectangle(Hx, Hy, Hwide, Hheight);
+         do Screen.drawRectangle(Gx, Gy, Gwide, Gheight);
+         do Screen.drawRectangle(Fx, Fy, Fwide, Fheight);
+         do Screen.drawRectangle(Ex, Ey, Ewide, Eheight);
+         do Screen.drawRectangle(Dx, Dy, Dwide, Dheight);
+         do Screen.drawRectangle(Cx, Cy, Cwide, Cheight);
+         do Screen.drawRectangle(Bx, By, Bwide, Bheight);
+         do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
+      }
+      return;
+   }
+
+   /** Moves the square left by 2 pixels. */
+   method void moveLeft() {
+      if (Ax - 1 > 1) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle(Ax , Ay, Awide, Aheight);
+         let Ax = Ax - 1;
+         let Awide = Awide - 1;
+         do Screen.drawRectangle(Bx , By, Bwide, Bheight);
+         let Bx = Bx - 1;
+         let Bwide = Bwide - 1;
+         do Screen.drawRectangle(Cx , Cy, Cwide, Cheight);
+         let Cx = Cx - 1;
+         let Cwide = Cwide - 1;
+         do Screen.drawRectangle(Dx , Dy, Dwide, Dheight);
+         let Dx = Dx - 1;
+         let Dwide = Dwide - 1;
+         do Screen.drawRectangle(Ex , Ey, Ewide, Eheight);
+         let Ex = Ex - 1;
+         let Ewide = Ewide - 1;
+         do Screen.drawRectangle(Fx , Fy, Fwide, Fheight);
+         let Fx = Fx - 1;
+         let Fwide = Fwide - 1;
+         do Screen.drawRectangle(Gx , Gy, Gwide, Gheight);
+         let Gx = Gx - 1;
+         let Gwide = Gwide - 1;
+         do Screen.drawRectangle(Hx , Hy, Hwide, Hheight);
+         let Hx = Hx - 1;
+         let Hwide = Hwide - 1;
+         do Screen.drawRectangle(Ix , Iy, Iwide, Iheight);
+         let Ix = Ix - 1;
+         let Iwide = Iwide - 1;
+         do Screen.drawRectangle(Jx , Jy, Jwide, Jheight);
+         let Jx = Jx - 1;
+         let Jwide = Jwide - 1;
+         do Screen.drawRectangle(Kx , Ky, Kwide, Kheight);
+         let Kx = Kx - 1;
+         let Kwide = Kwide - 1;
+         do Screen.drawRectangle(Lx , Ly, Lwide, Lheight);
+         let Lx = Lx - 1;
+         let Lwide = Lwide - 1;
+         do Screen.drawRectangle(Mx , My, Mwide, Mheight);
+         let Mx = Mx - 1;
+         let Mwide = Mwide - 1;
+         do Screen.drawRectangle(Nx , Ny, Nwide, Nheight);
+         let Nx = Nx - 1;
+         let Nwide = Nwide - 1;
+         do Screen.drawRectangle(Ox , Oy, Owide, Oheight);
+         let Ox = Ox - 1;
+         let Owide = Owide - 1;
+         do Screen.setColor(true);
+         do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
+         do Screen.drawRectangle(Bx, By, Bwide, Bheight);
+         do Screen.drawRectangle(Cx, Cy, Cwide, Cheight);
+         do Screen.drawRectangle(Dx, Dy, Dwide, Dheight);
+         do Screen.drawRectangle(Ex, Ey, Ewide, Eheight);
+         do Screen.drawRectangle(Fx, Fy, Fwide, Fheight);
+         do Screen.drawRectangle(Gx, Gy, Gwide, Gheight);
+         do Screen.drawRectangle(Hx, Hy, Hwide, Hheight);
+         do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
+         do Screen.drawRectangle(Jx, Jy, Jwide, Jheight);
+         do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
+         do Screen.drawRectangle(Lx, Ly, Lwide, Lheight);
+         do Screen.drawRectangle(Mx, My, Mwide, Mheight);
+         do Screen.drawRectangle(Nx, Ny, Nwide, Nheight);
+         do Screen.drawRectangle(Ox, Oy, Owide, Oheight);
+      }
+      return;
+   }
+
+   /** Moves the square right by 2 pixels. */
+   method void moveRight() {
+      if ((Ax +Asize) < 510) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle(Ax , Ay, Awide, Aheight);
+         let Ax = Ax + 1;
+         let Awide = Awide + 1;
+         do Screen.drawRectangle(Bx , By, Bwide, Bheight);
+         let Bx = Bx + 1;
+         let Bwide = Bwide + 1;
+         do Screen.drawRectangle(Cx , Cy, Cwide, Cheight);
+         let Cx = Cx + 1;
+         let Cwide = Cwide + 1;
+         do Screen.drawRectangle(Dx , Dy, Dwide, Dheight);
+         let Dx = Dx + 1;
+         let Dwide = Dwide + 1;
+         do Screen.drawRectangle(Ex , Ey, Ewide, Eheight);
+         let Ex = Ex + 1;
+         let Ewide = Ewide + 1;
+         do Screen.drawRectangle(Fx , Fy, Fwide, Fheight);
+         let Fx = Fx + 1;
+         let Fwide = Fwide + 1;
+         do Screen.drawRectangle(Gx , Gy, Gwide, Gheight);
+         let Gx = Gx + 1;
+         let Gwide = Gwide + 1;
+         do Screen.drawRectangle(Hx , Hy, Hwide, Hheight);
+         let Hx = Hx + 1;
+         let Hwide = Hwide + 1;
+         do Screen.drawRectangle(Ix , Iy, Iwide, Iheight);
+         let Ix = Ix + 1;
+         let Iwide = Iwide + 1;
+         do Screen.drawRectangle(Jx , Jy, Jwide, Jheight);
+         let Jx = Jx + 1;
+         let Jwide = Jwide + 1;
+         do Screen.drawRectangle(Kx , Ky, Kwide, Kheight);
+         let Kx = Kx + 1;
+         let Kwide = Kwide + 1;
+         do Screen.drawRectangle(Lx , Ly, Lwide, Lheight);
+         let Lx = Lx + 1;
+         let Lwide = Lwide + 1;
+         do Screen.drawRectangle(Mx , My, Mwide, Mheight);
+         let Mx = Mx + 1;
+         let Mwide = Mwide + 1;
+         do Screen.drawRectangle(Nx , Ny, Nwide, Nheight);
+         let Nx = Nx + 1;
+         let Nwide = Nwide + 1;
+         do Screen.drawRectangle(Ox , Oy, Owide, Oheight);
+         let Ox = Ox + 1;
+         let Owide = Owide + 1;
+         do Screen.setColor(true);
+         do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
+         do Screen.drawRectangle(Bx, By, Bwide, Bheight);
+         do Screen.drawRectangle(Cx, Cy, Cwide, Cheight);
+         do Screen.drawRectangle(Dx, Dy, Dwide, Dheight);
+         do Screen.drawRectangle(Ex, Ey, Ewide, Eheight);
+         do Screen.drawRectangle(Fx, Fy, Fwide, Fheight);
+         do Screen.drawRectangle(Gx, Gy, Gwide, Gheight);
+         do Screen.drawRectangle(Hx, Hy, Hwide, Hheight);
+         do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
+         do Screen.drawRectangle(Jx, Jy, Jwide, Jheight);
+         do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
+         do Screen.drawRectangle(Lx, Ly, Lwide, Lheight);
+         do Screen.drawRectangle(Mx, My, Mwide, Mheight);
+         do Screen.drawRectangle(Nx, Ny, Nwide, Nheight);
+         do Screen.drawRectangle(Ox, Oy, Owide, Oheight);
+      }
+      return;
+   }
+
+}
