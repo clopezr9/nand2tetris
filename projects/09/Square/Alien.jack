@@ -3,7 +3,7 @@
 // by Nisan and Schocken, MIT Press.
 // File name: projects/09/Alien/Alien.jack
 
-/** Implements a graphical square. */
+/** Implements a graphical alien. */
 class Alien {
 
    field int Ax, Ay, Awide, Aheight; // rectangle A
@@ -22,7 +22,7 @@ class Alien {
    field int Nx, Ny, Nwide, Nheight; // rectangle N
    field int Ox, Oy, Owide, Oheight; // rectangle O
 
-   /** Constructs a new square with a given location andAsize. */
+   /** Constructs a new square with a given location and Asize. */
    constructor Alien new(int x1, int y1, int wide1, int height1, 
                                              int x2, int y2, int wide2, int height2,
                                              int x3, int y3, int wide3, int height3,
@@ -102,7 +102,7 @@ class Alien {
       return this;
    }
 
-   /** Disposes this square. */
+   /** Disposes this alien. */
    method void dispose() {
       do Memory.deAlloc(this);
       return;
@@ -113,7 +113,7 @@ class Alien {
       do draw();
       return;
    }
-   /** Draws the square on the screen. */
+   /** Draws the alien on the screen. */
    method void draw() {
       do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
       do Screen.drawRectangle(Bx, By, Bwide, Bheight);
@@ -133,7 +133,7 @@ class Alien {
       return;
    }
 
-   /** Erases the square from the screen. */
+   /** Erases the alien from the screen. */
    method void erase() {
       do Screen.setColor(false);
       do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
@@ -154,9 +154,9 @@ class Alien {
       return;
    }
 
-   /** Moves the square up by 2 pixels. */
+   /** Moves the alien up by 1 pixel. */
    method void moveUp() {
-      if ((Cy - 1)  > 1) {
+      if ((Cy - 2)  > 1) {
          do Screen.setColor(false);
          do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
          let Ay = Ay - 1;
@@ -223,9 +223,9 @@ class Alien {
       return;
    }
 
-   /** Moves the square down by 2 pixels. */
+   /** Moves the alien down by 1 pixel. */
    method void moveDown() {
-      if (Iheight + 1 < 254) {
+      if ((Iheight + 2) < 254) {
          do Screen.setColor(false);
          do Screen.drawRectangle(Ax, Ay, Awide, Aheight);
          let Ay = Ay + 1;
@@ -254,7 +254,7 @@ class Alien {
          do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
          let Iy = Iy + 1;
          let Iheight = Iheight + 1;
-         do Screen.drawRectangle(Jx, Jy, Jx +Jwide, Jheight);
+         do Screen.drawRectangle(Jx, Jy, Jwide, Jheight);
          let Jy = Jy + 1;
          let Jheight = Jheight + 1;
          do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
@@ -278,7 +278,7 @@ class Alien {
          do Screen.drawRectangle(Mx, My, Mwide, Mheight);
          do Screen.drawRectangle(Lx, Ly, Lwide, Lheight);
          do Screen.drawRectangle(Kx, Ky, Kwide, Kheight);
-         do Screen.drawRectangle(Dx, Jy, Jwide, Jheight);
+         do Screen.drawRectangle(Jx, Jy, Jwide, Jheight);
          do Screen.drawRectangle(Ix, Iy, Iwide, Iheight);
          do Screen.drawRectangle(Hx, Hy, Hwide, Hheight);
          do Screen.drawRectangle(Gx, Gy, Gwide, Gheight);
@@ -292,9 +292,9 @@ class Alien {
       return;
    }
 
-   /** Moves the square left by 2 pixels. */
+   /** Moves the alien left by 1 pixel. */
    method void moveLeft() {
-      if (Ax - 1 > 1) {
+      if (Ax - 2 > 1) {
          do Screen.setColor(false);
          do Screen.drawRectangle(Ax , Ay, Awide, Aheight);
          let Ax = Ax - 1;
@@ -361,9 +361,9 @@ class Alien {
       return;
    }
 
-   /** Moves the square right by 2 pixels. */
+   /** Moves the alien right by 1 pixel. */
    method void moveRight() {
-      if ((Ax +Asize) < 510) {
+      if ((Owide + 2) < 510) {
          do Screen.setColor(false);
          do Screen.drawRectangle(Ax , Ay, Awide, Aheight);
          let Ax = Ax + 1;
@@ -430,4 +430,5 @@ class Alien {
       return;
    }
 
+   
 }

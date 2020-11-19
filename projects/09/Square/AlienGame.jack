@@ -73,8 +73,6 @@ class AlienGame {
             do moveAlien();
          }
          if (key = 81)  { let exit = true; }     // q key
-        // if (key = 90)  { do alien.decSize(); } // z key
-       //  if (key = 88)  { do alien.incSize(); } // x key
          if (key = 131) { let direction = 1; }   // up arrow
          if (key = 133) { let direction = 2; }   // down arrow
          if (key = 130) { let direction = 3; }   // left arrow
