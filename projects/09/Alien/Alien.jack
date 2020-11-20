@@ -429,6 +429,5 @@ class Alien {
       }
       return;
    }
-
    
 }
